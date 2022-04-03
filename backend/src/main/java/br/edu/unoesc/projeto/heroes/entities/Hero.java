@@ -7,6 +7,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 
 @Entity
@@ -18,14 +19,15 @@ public class Hero {
 	private String name;
 	@Enumerated(EnumType.STRING)
 	private HeroType heroType;
+	
 	@Column(name = "profilePicture", length = 1000, nullable = true)
+	@Lob
 	private byte[] profilePicture;
 
 	public Hero() {
 	}
 
 	public Hero(Long id, String name, HeroType heroType, byte[] profilePicture) {
-		super();
 		this.id = id;
 		this.name = name;
 		this.heroType = heroType;
