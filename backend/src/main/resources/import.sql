@@ -1,7 +1,7 @@
-INSERT INTO heroes(name, hero_type, profile_picture) VALUES('Superman', 'DC', null);
-INSERT INTO heroes(name, hero_type, profile_picture) VALUES('Batman', 'DC',  null);
-INSERT INTO heroes(name, hero_type, profile_picture) VALUES('Thor', 'MARVEL', null);
-INSERT INTO heroes(name, hero_type, profile_picture) VALUES('Capitão América', 'MARVEL', null);
+INSERT INTO heroes(name, hero_type) VALUES('Superman', 'DC');
+INSERT INTO heroes(name, hero_type) VALUES('Batman', 'DC');
+INSERT INTO heroes(name, hero_type) VALUES('Thor', 'MARVEL';
+INSERT INTO heroes(name, hero_type) VALUES('Capitão América', 'MARVEL');
 
 
 -- INSERT INTO heroes(name, hero_type, profile_picture) VALUES('Superman', 'DC', 'https://static.wikia.nocookie.net/dccomics/images/a/a5/Superman_Vol_5_1_Textless.jpg/revision/latest?cb=20200421194020&path-prefix=pt');
