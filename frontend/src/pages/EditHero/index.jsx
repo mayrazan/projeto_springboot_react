@@ -15,6 +15,7 @@ function EditHero() {
   const params = useParams();
   const [form, setForm] = useState([]);
   const [isLoading, setLoading] = useState(false);
+  const [isLoadingButton, setLoadingButton] = useState(false);
   const navigation = useNavigate();
 
   const getSuperHero = async () => {
@@ -38,9 +39,16 @@ function EditHero() {
   async function handleSubmit(event) {
     event.preventDefault();
 
+    setLoadingButton(true);
     await updateHero(params.id, form, {
       headers: { 'Content-Type': 'application/json' },
-    });
+    })
+      .catch((error) => {
+        setLoadingButton(false);
+      })
+      .finally(() => {
+        setLoadingButton(false);
+      });
     navigation('/');
   }
 
@@ -104,6 +112,7 @@ function EditHero() {
             fullWidth
             variant='contained'
             sx={{ mt: 3, mb: 2 }}
+            disabled={isLoadingButton}
           >
             Update
           </Button>
