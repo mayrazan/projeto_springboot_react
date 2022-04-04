@@ -8,6 +8,7 @@ import Typography from '@mui/material/Typography';
 import SelectType from '../../components/SelectType';
 import { createHero } from '../../services/service';
 import Input from '@mui/material/Input';
+import { useNavigate } from 'react-router-dom';
 
 function CreateHero() {
   const [form, setForm] = useState({
@@ -15,6 +16,7 @@ function CreateHero() {
     heroType: '',
     profilePicture: null,
   });
+  const navigation = useNavigate();
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -28,6 +30,7 @@ function CreateHero() {
       await createHero(data, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
+      navigation('/');
     } else {
       alert('Preencha todos os campos');
     }
@@ -47,7 +50,7 @@ function CreateHero() {
         <Typography component='h1' variant='h5'>
           Create new Super Hero
         </Typography>
-        <Box component='form' noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+        <Box component='form' noValidate onSubmit={handleSubmit} sx={{ mt: 3 }} enctype="multipart/form-data">
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField

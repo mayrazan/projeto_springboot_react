@@ -1,5 +1,6 @@
 package br.edu.unoesc.projeto.heroes.entities;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -10,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
 
+import org.apache.tomcat.util.codec.binary.Base64;
+
 @Entity
 @Table(name = "heroes")
 public class Hero {
@@ -19,8 +22,8 @@ public class Hero {
 	private String name;
 	@Enumerated(EnumType.STRING)
 	private HeroType heroType;
-	
-	@Column(name = "profilePicture", length = 1000, nullable = true)
+
+	@Column(name = "profilePicture", nullable = true)
 	@Lob
 	private byte[] profilePicture;
 
@@ -65,9 +68,13 @@ public class Hero {
 	public void setProfilePicture(byte[] profilePicture) {
 		this.profilePicture = profilePicture;
 	}
-	
+
+	public String getFotoBase64() {
+		return Base64.encodeBase64String(this.getProfilePicture());
+	}
+
 	public String getTypeHeroName() {
-        return heroType.getHeroType();
-    }
+		return heroType.getHeroType();
+	}
 
 }

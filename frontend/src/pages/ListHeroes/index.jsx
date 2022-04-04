@@ -160,7 +160,7 @@ function ListHeroes() {
                     component='img'
                     image={
                       hero.profilePicture !== null
-                        ? hero.profilePicture
+                        ? 'data:image/png;base64,'+ hero.profilePicture
                         : 'https://source.unsplash.com/random'
                     }
                     alt='random'

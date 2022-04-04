@@ -5,3 +5,7 @@ const api = axios.create({
 });
 
 export default api;
+
+//http://localhost:8080
+
+//https://heroes-api-unoesc.herokuapp.com

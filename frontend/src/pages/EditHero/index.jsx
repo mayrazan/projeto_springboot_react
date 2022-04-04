@@ -8,13 +8,14 @@ import Typography from '@mui/material/Typography';
 import SelectType from '../../components/SelectType';
 import { getHero, updateHero } from '../../services/service';
 import Input from '@mui/material/Input';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Loading from '../../components/Loading';
 
 function EditHero() {
   const params = useParams();
   const [form, setForm] = useState([]);
   const [isLoading, setLoading] = useState(false);
+  const navigation = useNavigate();
 
   const getSuperHero = async () => {
     setLoading(true);
@@ -40,6 +41,7 @@ function EditHero() {
     await updateHero(params.id, form, {
       headers: { 'Content-Type': 'application/json' },
     });
+    navigation('/');
   }
 
   if (isLoading) return <Loading />;
